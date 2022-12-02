@@ -2,18 +2,21 @@ import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-
 import Box from "@mui/material/Box";
-
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
-
 import axios from "axios";
-
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import authValue from "App";
 
 function SlackMessenger() {
+  const navigate = useNavigate();
   const [slackmessenger, setMessenger] = useState([]);
-
+  console.log("authValue from slackmessenger", authValue.status);
+  if (authValue.status === "true") { }
+  else {
+    navigate("/signin")
+  }
   useEffect(async () => {
     axios.get("http://192.168.0.23:9990/slack-thread").then((res) => {
       const threads = res.data;

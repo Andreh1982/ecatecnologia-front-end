@@ -1,23 +1,23 @@
-// @mui material components
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 import Alert from "@mui/material/Alert";
-
-// Material Dashboard 2 React components
 import Box from "@mui/material/Box";
-
-// Material Dashboard 2 React example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
-
 import axios from "axios";
-
 import { useEffect, useState } from "react";
 import { Divider } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import authValue from "App";
 
 function ShowPayload() {
+  const navigate = useNavigate();
+  console.log("authValue from showpayload", authValue.status);
+  if (authValue.status === "true") { }
+  else {
+    navigate("/signin")
+  }
   const [payload, setPayload] = useState([]);
-
   useEffect(async () => {
     axios.get("http://localhost:9001/entries/all").then((res) => {
       const threads = res;

@@ -19,10 +19,18 @@ import BasicLayout from "layouts/authentication/components/BasicLayout";
 import bgImage from "assets/images/bg-sign-in-basic.jpeg";
 import { useNavigate } from "react-router-dom";
 
+import authValue from "App";
+
 function Basic() {
   const navigate = useNavigate();
   const [rememberMe, setRememberMe] = useState(false);
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
+
+  function handleSignIn() {
+    authValue.status = "true";
+    console.log("authValue handleSign", authValue.status);
+    navigate("/slackmessenger");
+  }
 
   return (
     <BasicLayout image={bgImage}>
@@ -89,10 +97,9 @@ function Basic() {
                     document.getElementById("userLogin").value === "admin" &&
                     document.getElementById("passwdLogin").value === "123123"
                   ) {
-                    alert("NICE! You've logged in successfully!");
-                    navigate("/slackmessenger");
+                    handleSignIn();
                   } else {
-                    alert("OOPS! Wrong credentials!");
+                    alert("OOPS! Wrong credentials, try again!");
                   }
                 }}
               >

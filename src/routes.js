@@ -7,7 +7,9 @@ import Icon from "@mui/material/Icon";
 
 const routes = [
   {
-    route: "/signin",
+    name: "Sign In",
+    key: "signin",
+    route: "/",
     component: <SignIn />,
   },
   {
